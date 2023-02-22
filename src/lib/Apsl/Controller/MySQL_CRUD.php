@@ -4,6 +4,7 @@ namespace Apsl\Controller;
 
 use Apsl\Config\Config;
 use PDO;
+use PDOException;
 
 class MySQL_CRUD {
 
@@ -20,17 +21,30 @@ class MySQL_CRUD {
             $this->connection = new PDO($dsn,$config->getValue('user'),$config->getValue('password')) ?? null;
         
         } catch (PDOException $e){
-            echo $e->getMessage();
+            
+            // echo $e->getMessage();
+        
         }
 
     }
 
-    public function pushQuery(string $query) : array
+    public function pushQuery(string $query) : array | PDOException
     {
         if ($this->connection !== null)
         {
-            return $this->connection->query($query)->fetchAll();
+            try{
+
+                return $this->connection->query($query)->fetchAll();
+
+            } catch (PDOException $e){
+
+                return $e;
+
+            }
+            
         }
+
+        return new PDOException("connection does not exist!"); 
         
     }
 
