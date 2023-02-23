@@ -1,9 +1,9 @@
 <?php
 
-namespace Apsl\Controller;
+namespace Apsl\Controller\DB;
 
-use Apsl\Controller\MySQL_CRUD;
-use Apsl\Controller\DB_Functional;
+use Apsl\Controller\DB\MySQL_CRUD;
+use Apsl\Controller\DB\DB_Functional;
 use Exception;
 
 class RestorePassword {

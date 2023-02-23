@@ -18,6 +18,7 @@ class Application
         $pageClass = $routing[$uri] ?? $config->getValue('_404');
         $page = new $pageClass($request);
         $response = $page->getResponse();
+
         $response->send();
     }
 }

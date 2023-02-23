@@ -1,6 +1,6 @@
 <?php
 
-namespace Apsl\Controller;
+namespace Apsl\Controller\DB;
 
 class DB_Functional{
     public static function hash(string $text) : string

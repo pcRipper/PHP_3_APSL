@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<form action="/index.php" method="post">
+<form action="/" method="post">
     <button type="submit">Log out</button>
 </form>
 

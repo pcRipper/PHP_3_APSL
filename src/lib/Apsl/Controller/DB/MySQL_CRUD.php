@@ -1,6 +1,6 @@
 <?php
 
-namespace Apsl\Controller;
+namespace Apsl\Controller\DB;
 
 use Apsl\Config\Config;
 use PDO;

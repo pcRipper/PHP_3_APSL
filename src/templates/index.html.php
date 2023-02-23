@@ -12,12 +12,16 @@
 </head>
 <body>
 
-    <form action="/secret.php" method="post">
+    <form action="/db_access/login" method="post" id="main">
         <input type="text" name="login" placeholder="login">
         <input type="password" name="pass" placeholder="password">
+
         <button type="submit">Log in</button>
         <a href = "/restore_password">restore password</a>
     </form>
-
+    <form action="/db_access/registrate" method="post" id="side">
+        <button type="submit">Register</button>
+    </form>
+    
 </body>
 </html>

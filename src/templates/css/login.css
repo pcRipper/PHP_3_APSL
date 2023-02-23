@@ -7,28 +7,35 @@ body{
     justify-content: center;
 }
 
-body > form {
+body > #main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 250px;
-    width: 200px;
+    height: 350px;
+    width: 300px;
     background-color: grey;
     margin-top: calc(50vh - 125px);
   }
   
-form > input,button {
+#main > input,button {
     height: 27px;
     width: 90%;
     margin: 2px;
 }
 
-form > button {
+#main > button {
     margin-top: 10px;
 }
 
-form > a {
+#main > a {
     font-size: 10;
-    margin-top: 10px;
+    margin-top: 50px;
+}
+
+#side {
+    position: absolute;
+    margin-top: calc(50vh + 75px);
+    width: 300px;
+    margin-left: 27px;
 }
