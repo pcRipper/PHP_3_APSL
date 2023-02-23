@@ -8,6 +8,7 @@ use Apsl\Controller\Registration;
 use Apsl\Controller\DB_Functional;
 use Apsl\Controller\RestorePassword;
 
+// var_dump($_POST);
 
 $app = new Application();
 $app->run();

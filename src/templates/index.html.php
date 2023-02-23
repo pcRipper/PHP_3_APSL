@@ -16,12 +16,18 @@
         <input type="text" name="login" placeholder="login">
         <input type="password" name="pass" placeholder="password">
 
-        <button type="submit">Log in</button>
+        <button type="button" onclick="redirect('/db_access/login')">Log in</button>
+        <button type="button" onclick="redirect('/db_access/registrate')">Register</button>
+
         <a href = "/restore_password">restore password</a>
     </form>
-    <form action="/db_access/registrate" method="post" id="side">
-        <button type="submit">Register</button>
-    </form>
-    
+
+    <script>
+        function redirect(path){
+            var form = document.getElementById("main");
+            form.action = path;
+            form.submit();
+        }
+    </script>
 </body>
 </html>

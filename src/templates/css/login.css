@@ -32,10 +32,3 @@ body > #main {
     font-size: 10;
     margin-top: 50px;
 }
-
-#side {
-    position: absolute;
-    margin-top: calc(50vh + 75px);
-    width: 300px;
-    margin-left: 27px;
-}

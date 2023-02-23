@@ -5,6 +5,7 @@ namespace Apsl\Controller\DB;
 use Apsl\Controller\DB\MySQL_CRUD;
 use Apsl\Controller\DB\DB_Functional;
 use Exception;
+use DateTime;
 
 class RestorePassword {
 
@@ -36,7 +37,7 @@ class RestorePassword {
     {
         $crud = new MySQL_CRUD();
 
-        $current_time = date('d-m-y h:i:s');
+        $current_time = (new DateTime())->format('d-m-y h:i:s.u');
         $hash = DB_Functional::hash($current_time);
         $insert_query = "INSERT INTO _UserHash (_email,_hash,_createdTime) VALUES ('$this->email','$hash','$current_time');";
 
