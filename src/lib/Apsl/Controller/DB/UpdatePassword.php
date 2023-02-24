@@ -21,22 +21,22 @@ class UpdatePassword {
         $this->email = $email;
     }
 
-    public function restore() : bool
+    public function restore() : array
     {
+        $response = [];
         $current_time = (new DateTime())->format('y-m-d h:i:s.u');
         $db_result = $this->writeToDB($current_time);
         $mail_result = $this->sendMail($current_time);
 
         if($db_result != null){
-            echo $db_result->getMessage();
-            return false;
+            $response['db'] = $db_result->getMessage();
         }
         if($mail_result != null){
-            echo $mail_result->getMessage();
-            return false;
+            $response['mail'] = $mail_result->getMessage();
+            $response['hash'] = DB_Functional::hash($current_time);
         }
 
-        return true;
+        return $response;
     }
 
     private function writeToDB($current_time) : Exception | null

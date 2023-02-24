@@ -11,14 +11,24 @@ class SendPassword extends Page
 {
     public function createResponse(): void
     {
-        $restorer = new UpdatePassword($_POST['login']);
+        $result = (new UpdatePassword($_POST['login']))->restore();
 
-        $restorer->restore();
+        if(count($result) > 0 && isset($result['mail']))
+        {
+            $this->response->useTemplate('templates/local-link.html.php', [
+                'title' => 'Main',
+                'error' => $result['mail'],
+                'hash' => $result['hash']
+            ]);
+        }
+        else
+        {
+            $this->response->redirect("/",Response::STATUS_CODE_200_OK);
+            $this->response->useTemplate('templates/index.html.php', [
+                'title' => 'Main'
+            ]);
+        }
 
-        $this->response->redirect("/",Response::STATUS_CODE_200_OK);
-        $this->response->useTemplate('templates/index.html.php', [
-            'title' => 'Main',
-            'db_access_result' => 'Failed to registrate!'
-        ]);
+
     }
 }

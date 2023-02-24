@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <form action="restore_password/send" method="post" id="main">
+    <form action="restore-password/send" method="post" id="main">
         <input type="text" name="login" placeholder="Your email">
         <button type="submit">Send verification mail</button>
     </form>
