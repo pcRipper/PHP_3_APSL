@@ -13,8 +13,8 @@
 <body>
 
     <form action="/db_access/login" method="post" id="main">
-        <input type="text" name="login" placeholder="login">
-        <input type="password" name="pass" placeholder="password">
+        <input type="text" name="login" placeholder="Email">
+        <input type="password" name="pass" placeholder="Password">
 
         <button type="button" onclick="redirect('/db_access/login')">Log in</button>
         <button type="button" onclick="redirect('/db_access/registrate')">Register</button>

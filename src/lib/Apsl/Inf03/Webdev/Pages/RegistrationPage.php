@@ -20,7 +20,7 @@ class RegistrationPage extends Page
         {
             $this->response->redirect("/",Response::STATUS_CODE_200_OK);
             $this->response->useTemplate('templates/index.html.php', [
-                'title' => 'Login',
+                'title' => 'Main',
                 'db_access_result' => 'Failed to registrate!'
             ]);
         }

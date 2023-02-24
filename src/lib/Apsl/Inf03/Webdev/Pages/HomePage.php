@@ -11,7 +11,7 @@ class HomePage extends Page
     {
         $this->response->addHeader(Response::HEADER_CONTENT_TYPE, 'text/html');
         $this->response->useTemplate('templates/index.html.php', [
-            'title' => 'Hello!'
+            'title' => 'Main'
         ]);
     }
 }

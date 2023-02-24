@@ -31,6 +31,8 @@ services:
       - ./../src:/var/www/localhost
       - dbdata:/var/lib/mysql
       - ./mysql/my.cnf:/etc/mysql/my.cnflog
+    environment:
+      MYSQL_ROOT_PASSWORD: root
 
   phpmyadmin:
     image: "phpmyadmin/phpmyadmin"

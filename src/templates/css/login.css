@@ -15,7 +15,7 @@ body > #main {
     height: 350px;
     width: 300px;
     background-color: grey;
-    margin-top: calc(50vh - 125px);
+    margin-top: calc(50vh - 200px);
   }
   
 #main > input,button {

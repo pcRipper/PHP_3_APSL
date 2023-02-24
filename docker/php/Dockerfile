@@ -46,8 +46,14 @@ RUN apt-get update && \
 RUN docker-php-ext-install calendar
 
 # imagick
+# RUN apt-get update && \
+#   apt-get install -y --no-install-recommends libmagickwand-dev && \
+#   pecl install imagick -y && \
+#   docker-php-ext-enable imagick && \
+#   rm -r /var/lib/apt/lists/*
+
 RUN apt-get update && \
-  apt-get install -y --no-install-recommends libmagickwand-dev && \
-  pecl install imagick -y && \
-  docker-php-ext-enable imagick && \
-  rm -r /var/lib/apt/lists/* \
+  apt-get install -y --no-install-recommends git && \
+  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
+  composer require symfony/mailer && \
+  rm -r /var/lib/apt/lists/*
