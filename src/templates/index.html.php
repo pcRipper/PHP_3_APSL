@@ -28,6 +28,18 @@
             form.action = path;
             form.submit();
         }
+
+        function showMessage(){
+            <?php
+                if (isset($message))
+                {
+                    echo ((isset($message))? "alert($message)" : "");;
+                } 
+            ?>
+        }
+
+        document.onload = showMessage();
+
     </script>
 </body>
 </html>

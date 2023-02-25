@@ -18,7 +18,7 @@ class SendPassword extends Page
             $this->response->useTemplate('templates/local-link.html.php', [
                 'title' => 'Main',
                 'error' => $result['mail'],
-                'hash' => $result['hash']
+                'link' => $result['link']
             ]);
         }
         else

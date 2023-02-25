@@ -24,16 +24,19 @@ class UpdatePassword {
     public function restore() : array
     {
         $response = [];
-        $current_time = (new DateTime())->format('y-m-d h:i:s.u');
+        $current_time = (new DateTime())->format('y-m-d H:i:s.u');
         $db_result = $this->writeToDB($current_time);
-        $mail_result = $this->sendMail($current_time);
 
         if($db_result != null){
             $response['db'] = $db_result->getMessage();
+            return $response;
         }
+
+        $mail_result = $this->sendMail($current_time);
+
         if($mail_result != null){
             $response['mail'] = $mail_result->getMessage();
-            $response['hash'] = DB_Functional::hash($current_time);
+            $response['link'] = '/restore-password/new-password?hash='.DB_Functional::hash($current_time);
         }
 
         return $response;
@@ -46,7 +49,7 @@ class UpdatePassword {
         $hash = DB_Functional::hash($current_time);
 
         $insert_query = "INSERT INTO _UserHash (_email,_hash,_createdTime) VALUES ('$this->email','$hash','$current_time');";
-        $check_query  = "SELECT TIMESTAMPDIFF(SECOND,_createdTime,NOW()) < ".self::HASH_VALID_TIME." FROM _UserHash WHERE _email = '$this->email';";
+        $check_query  = "SELECT * FROM _UserHash WHERE _email = '$this->email' AND TIMESTAMPDIFF(SECOND,_createdTime,NOW()) < ".self::HASH_VALID_TIME."";
 
         try{
 

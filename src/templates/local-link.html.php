@@ -9,10 +9,8 @@
 </head>
 <body>
     <h1>If you see this page an error occured with email sending.</h1>
-    <form action="/restore-password/new-password" method="post" id="main">
-        <button type="submit">This is your link for password restore</a>
-        <input type="text" name="hash" value="<?php echo $hash ?>" style="display:none;">
-    </form>
+
+    <a href = "<?php echo $link ?>" type="submit">This is your link for password restore</a>
 
     <p>Error details : <?php echo $error ?></p>
 
