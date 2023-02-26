@@ -3,7 +3,6 @@
 namespace Apsl\Controller\DB\Entity;
 
 use Apsl\Controller\DB\Entity\Entity;
-use Apsl\Controller\DB\DB_Functional;
 
 class _User implements Entity
 {
@@ -18,11 +17,11 @@ class _User implements Entity
 	public function fromQuery(array $row)
     {
         $this->_email = $row['_email'];
-        $this->_password = $row['password'];
+        $this->_password = $row['_password'];
 	}
 	
 	public function toQuery() : string
     {
-        return "$this->_email,".DB_Functional::hash($this->_password);
+        return "$this->_email,$this->_password";
 	}
 }

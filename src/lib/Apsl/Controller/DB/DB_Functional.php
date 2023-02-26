@@ -19,8 +19,4 @@ class DB_Functional{
 
         return preg_match($regex_formula,$password);
     }
-
-    public static function date_diff(string $date1,string $date2){
-        
-    }
 }

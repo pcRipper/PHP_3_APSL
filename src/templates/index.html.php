@@ -16,8 +16,8 @@
         <input type="text" name="login" placeholder="Email">
         <input type="password" name="pass" placeholder="Password">
 
-        <button type="button" onclick="redirect('/db-access/login')">Log in</button>
-        <button type="button" onclick="redirect('/db-access/registrate')">Register</button>
+        <button type="button" onclick="redirect('/meadiator/login')">Log in</button>
+        <button type="button" onclick="redirect('/meadiator/registrate')">Register</button>
 
         <a href = "/restore-password">restore password</a>
     </form>

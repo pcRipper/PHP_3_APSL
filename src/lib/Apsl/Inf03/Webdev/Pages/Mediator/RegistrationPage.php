@@ -5,7 +5,7 @@ namespace Apsl\Inf03\Webdev\Pages;
 use Apsl\Controller\Page;
 use Apsl\Http\Response;
 use Apsl\Controller\DB\Registration;
-use Apsl\Controller\DB\MySQL_CRUD;
+use Apsl\Controller\DB\MySQL;
 use Apsl\Controller\DB\DB_Functional;
 
 class RegistrationPage extends Page
@@ -42,7 +42,10 @@ class RegistrationPage extends Page
     private function registrate(string $email,string $password): array
     {
         $errors = array();
-        $crud = new MySQL_CRUD();        
+
+        $crud = new MySQL();
+        $crud->connect();
+
         $query_result = $crud->pushQuery("SELECT * FROM _User WHERE _email = '$email'");
 
         if(!is_array($query_result) || count($query_result) > 0)
