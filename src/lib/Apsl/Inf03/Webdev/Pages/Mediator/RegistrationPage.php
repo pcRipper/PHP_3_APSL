@@ -12,7 +12,10 @@ class RegistrationPage extends Page
 {
     public function createResponse(): void
     {
-        $reg_result = $this->registrate($_POST['login'], $_POST['pass']);
+        $reg_result = $this->registrate(
+            $this->request->getPostValue('login'),
+            $this->request->getPostValue('password')
+        );
 
         if(count($reg_result) == 0)
         {
@@ -39,7 +42,7 @@ class RegistrationPage extends Page
 
     }
 
-    private function registrate(string $email,string $password): array
+    private function registrate(string $email,string $password) : array
     {
         $errors = array();
 

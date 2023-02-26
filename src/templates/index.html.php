@@ -8,13 +8,13 @@
 
     <link rel="stylesheet" type="text/css" href="templates/css/login.css" />
 
-    <title><?php echo $title ?></title>
+    <title></title>
 </head>
 <body>
 
-    <form action="/db_access/login" method="post" id="main">
+    <form action="" method="post" id="main">
         <input type="text" name="login" placeholder="Email">
-        <input type="password" name="pass" placeholder="Password">
+        <input type="password" name="password" placeholder="Password">
 
         <button type="button" onclick="redirect('/mediator/login')">Log in</button>
         <button type="button" onclick="redirect('/mediator/registrate')">Register</button>
@@ -28,18 +28,6 @@
             form.action = path;
             form.submit();
         }
-
-        function showMessage(){
-            <?php
-                if (isset($message))
-                {
-                    echo ((isset($message))? "alert($message)" : "");;
-                } 
-            ?>
-        }
-
-        document.onload = showMessage();
-
     </script>
 </body>
 </html>

@@ -22,6 +22,6 @@ class Template
 
         include $this->file;
 
-        return ob_get_clean();
+        return ob_get_contents();
     }
 }
