@@ -1,5 +1,5 @@
-<?php
-$head = "
+<!doctype html>
+<html lang='en'>
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, user-scalable=yes, initial-scale=1.0'>
@@ -9,18 +9,30 @@ $head = "
 
     <title>$title</title>
 </head>
-";
-$body = "
 <body>
-    <form action='/restore-password/send-new-password' method='post' id='main'>
+    <form action='/mediator/restore-password/update-password' method='post' id='main'>
         
-        <input type='text' name='email' value='$email' style = 'display:none;'>
+        <input type='text' name='email' value='<?php echo $email ?>' style = 'display:none;'>
         <input  type='text' name='new_password' placeholder='New password'>
         <input  type='text' name='new_password_repeat' placeholder='Repeat new password'>
-        <button type='submit'>Update</button>
+        <button type='button' onclick='redirect()'>Update</button>
 
     </form>
-</body>
-";
+    <script>
 
-echo "<!doctype html>$head$body<html lang='en'></html>";
+        function redirect(){
+            var input = document.querySelectorAll('body > form > input');
+            
+            if(input[1].value == input[2].value)
+            {
+                form.submit();
+            }
+            else
+            {
+                alert("Passwords do not match");
+            }
+        }
+
+    </script>
+</body>
+</html>

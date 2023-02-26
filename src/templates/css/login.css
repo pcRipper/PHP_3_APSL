@@ -7,7 +7,7 @@ body{
     justify-content: center;
 }
 
-body > #main {
+body > form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,17 +18,17 @@ body > #main {
     margin-top: calc(50vh - 200px);
   }
   
-#main > input,button {
+form > input,button {
     height: 27px;
     width: 90%;
     margin: 2px;
 }
 
-#main > button {
+form > button {
     margin-top: 10px;
 }
 
-#main > a {
+form > a {
     font-size: 10;
     margin-top: 50px;
 }

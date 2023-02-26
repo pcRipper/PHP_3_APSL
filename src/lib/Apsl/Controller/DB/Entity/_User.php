@@ -9,10 +9,10 @@ class _User implements Entity
     public string $_email;
     public string $_password;
 
-    public function __construct()
+    public function __construct(string $_email = "", string $_password = "")
     {
-        $this->_email = "";
-        $this->_password = "";
+        $this->_email = $_email;
+        $this->_password = $_password;
     }
 	public function fromQuery(array $row)
     {

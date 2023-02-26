@@ -2,9 +2,9 @@
 
 namespace Apsl\Inf03\Webdev\Pages\Mediator;
 
+use Apsl\Controller\DB\Entity\_User;
 use Apsl\Controller\Page;
 use Apsl\Http\Response;
-use Apsl\Controller\DB\Registration;
 use Apsl\Controller\DB\MySQL;
 use Apsl\Controller\DB\DB_Functional;
 
@@ -12,10 +12,12 @@ class RegistrationPage extends Page
 {
     public function createResponse(): void
     {
-        $reg_result = $this->registrate(
+        $_user = new _User(
             $this->request->getPostValue('login'),
             $this->request->getPostValue('password')
         );
+
+        $reg_result = $this->registrate($_user);
 
         if(count($reg_result) == 0)
         {
@@ -42,32 +44,32 @@ class RegistrationPage extends Page
 
     }
 
-    private function registrate(string $email,string $password) : array
+    private function registrate($_user) : array
     {
         $errors = array();
 
         $crud = new MySQL();
         $crud->connect();
 
-        $query_result = $crud->pushQuery("SELECT * FROM _User WHERE _email = '$email'");
+        $query_result = $crud->pushQuery("SELECT * FROM _User WHERE _email = '$_user->_email'");
 
         if(!is_array($query_result) || count($query_result) > 0)
         {
             $errors[] = "The email is in use";
         }
 
-        if(!DB_Functional::checkEmail($email))
+        if(!DB_Functional::checkEmail($_user->_email))
         {
             $errors[] = "Invalid email!";
         }
-        if(!DB_Functional::checkPassword($password))
+        if(!DB_Functional::checkPassword($_user->_password))
         {
             $errors[] = "Invalid password!";
         }
 
         if(count($errors) > 0)return $errors;
 
-        $insert_query = "INSERT INTO _User (_email,_password) VALUES ('$email','" . DB_Functional::hash($password) . "');";
+        $insert_query = "INSERT INTO _User (_email,_password) VALUES ('$_user->_email','" . DB_Functional::hash($_user->_password) . "');";
         $query_result = $crud->pushQuery($insert_query);
 
         return $errors;
