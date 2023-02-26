@@ -2,7 +2,7 @@
 
 return [
     'host' => 'docker-db-1',
-    'dbname' => 'PHP_APSL',
+    'dbname' => 'DB_DOCKER',
     'user' => 'root',
     'password' => 'root'
 ];

@@ -1,6 +1,6 @@
 <?php
 
-namespace Apsl\Inf03\Webdev\Pages;
+namespace Apsl\Inf03\Webdev\Pages\Mediator;
 
 use Apsl\Controller\Page;
 use Apsl\Http\Response;
